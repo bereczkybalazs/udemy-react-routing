@@ -2,8 +2,9 @@ import React, { Component } from 'react';
 
 import Courses from './containers/Courses/Courses';
 import Users from './containers/Users/Users';
-import {BrowserRouter, Link, Route} from "react-router-dom";
+import {BrowserRouter, Link, Route, Switch} from "react-router-dom";
 import Tasks from "./components/Tasks/Tasks";
+import Page404 from "./components/Page404/Page404";
 
 class App extends Component {
   render () {
@@ -23,8 +24,11 @@ class App extends Component {
               </ul>
             </nav>
           </header>
-          <Route path="/users" exact component={Users}/>
-          <Route path="/all-courses" component={Courses}/>
+          <Switch>
+            <Route path="/users" exact component={Users}/>
+            <Route path="/all-courses" component={Courses}/>
+            <Route component={Page404}/>
+          </Switch>
         </div>
       </BrowserRouter>
     );

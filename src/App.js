@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 
 import Courses from './containers/Courses/Courses';
 import Users from './containers/Users/Users';
-import {BrowserRouter, Link, Route, Switch} from "react-router-dom";
+import {BrowserRouter, Link, Route, Switch, Redirect} from "react-router-dom";
 import Tasks from "./components/Tasks/Tasks";
 import Page404 from "./components/Page404/Page404";
 
@@ -26,7 +26,8 @@ class App extends Component {
           </header>
           <Switch>
             <Route path="/users" exact component={Users}/>
-            <Route path="/all-courses" component={Courses}/>
+            <Redirect from="/all-courses" to="/courses"/>
+            <Route path="/courses" component={Courses}/>
             <Route component={Page404}/>
           </Switch>
         </div>

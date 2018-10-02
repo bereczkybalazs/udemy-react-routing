@@ -16,7 +16,15 @@ class Courses extends Component {
     }
 
     goToCourse = (id) => {
-      this.props.history.push('/course/' + id)
+      const course = this.state.courses.find((course) => {
+        return course.id === id
+      })
+      if (course) {
+        this.props.history.push({
+          pathname: '/course/' + course.id,
+          search: '?title=' + course.title
+        })
+      }
     }
 
     render () {

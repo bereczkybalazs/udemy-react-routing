@@ -7,13 +7,26 @@ class Course extends Component {
     id: null
   }
 
-  componentDidMount = () => {
+  componentDidMount() {
+    this.initCourse()
+  }
+  componentDidUpdate() {
+    this.initCourse()
+  }
+
+  initCourse = () => {
+    if (this.props.match.params.id !== this.state.id) {
+      this.setId()
+      this.setTitle()
+    }
+  }
+
+  setId = () => {
     this.setState(() => {
       return {
         id: this.props.match.params.id
       }
     })
-    this.setTitle()
   }
 
   setTitle = () => {

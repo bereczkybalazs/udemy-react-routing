@@ -11,6 +11,14 @@ class Courses extends Component {
         ]
     }
 
+    componentDidMount () {
+      console.log(this.props);
+    }
+
+    goToCourse = (id) => {
+      this.props.history.push('/course/' + id)
+    }
+
     render () {
         return (
             <div>
@@ -18,7 +26,11 @@ class Courses extends Component {
                 <section className="Courses">
                     {
                         this.state.courses.map( course => {
-                            return <article className="Course" key={course.id}>{course.title}</article>;
+                            return <article
+                              className="Course"
+                              key={course.id}
+                              onClick={() => this.goToCourse(course.id)}
+                            >{course.title}</article>;
                         } )
                     }
                 </section>
